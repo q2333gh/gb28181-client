@@ -40,3 +40,8 @@ ZLMediaKit流媒体服务器地址：https://github.com/ZLMediaKit/ZLMediaKit
 在wvp项目中的示例图：
 ![输入图片说明](src/main/resources/device/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208112700.png)
 ![输入图片说明](src/main/resources/device/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20211208112726.png)
+］
+
+
+
+py文件发送注册请求，每次启动都需要
