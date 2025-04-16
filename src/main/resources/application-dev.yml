@@ -1,35 +1,36 @@
 server:
-    port: 8081
+    port: 8035
 
 # 28181 SIP服务器的配置
+# 绑定WVP-gb28181 repo 里面写到yml
 sip-server:
     # [必须修改] 本机的IP
-    ip: 192.168.1.135
+    ip: 192.168.0.93
     # 28181服务监听的端口
     port: 5060
     # 根据国标6.1.2中规定，domain宜采用ID统一编码的前十位编码。国标附录D中定义前8位为中心编码（由省级、市级、区级、基层编号组成，参照GB/T 2260-2007）
     # 后两位为行业编码，定义参照附录D.3
     # 3701020049标识山东济南历下区 信息行业接入
-    domain: ${WVP_DOMAIN:4401020049}
-    id: ${WVP_ID:44010200492000000001}
+    domain: 4101050000
+    id: 41010500002000000001
     # [可选] 默认设备认证密码，后续扩展使用设备单独密码, 移除密码将不进行校验
-    password: ${WVP_PWD:admin123}
+    password: 12345678
     #心跳周期
     keepaliveTimeOut: 30
 
 #作为28181设备的配置
 sip-device:
     # [必须修改] 本机的IP
-    ip: 192.168.1.135
+    ip: 192.168.0.93
     # 28181服务监听的端口
     port: 5080
     #
-    id: 64010000001110000001
+    id: 64010000001110003301
     #默认设备认证密码
-    password: admin123
+    password: 12345678
 
 ffmpeg:
     #ffmpeg执行文件路径
-    path: D:\Program Files\ffmpeg\bin\ffmpeg.exe
+    path: C:\ProgramData\chocolatey\bin\ffmpeg.exe
     #模拟推送视频流的命令
-    pushStreamCmd: -re -i {filePath} -vcodec h264 -acodec aac -f rtp_mpegts rtp://{ip}:{port}
+    pushStreamCmd: -re -stream_loop -1 -i ./a.mp4 -c:v h264 -preset ultrafast -crf 35 -s 854x480 -r 15 -c:a aac -ar 44100 -b:a 128k -f rtsp -rtsp_transport tcp rtsp://127.0.0.1:554/live/test?sign=74b87337454200d4d33f80c4663dc5e5
