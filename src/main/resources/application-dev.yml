@@ -34,3 +34,7 @@ ffmpeg:
     path: C:\ProgramData\chocolatey\bin\ffmpeg.exe
     #模拟推送视频流的命令
     pushStreamCmd: -re -stream_loop -1 -i ./a.mp4 -c:v h264 -preset ultrafast -crf 35 -s 854x480 -r 15 -c:a aac -ar 44100 -b:a 128k -f rtsp -rtsp_transport tcp rtsp://127.0.0.1:554/live/test?sign=74b87337454200d4d33f80c4663dc5e5
+
+#logging:
+#  level:
+#    root: debug
